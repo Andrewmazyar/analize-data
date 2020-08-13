@@ -17,6 +17,7 @@ import java.util.List;
 public class ReadFileServiceImpl implements ReadFileService {
     private static final char WRITE = 'C';
     private static final char READ = 'D';
+    private static final int MAX_LINES = 100_000;
 
     @Inject
     private CollectData collectData;
@@ -48,7 +49,7 @@ public class ReadFileServiceImpl implements ReadFileService {
             if (count == 0) {
                 fileValue = Integer.parseInt(line);
                 count++;
-            } else if (count <= fileValue) {
+            } else if (count <= fileValue && count <= MAX_LINES) {
                 String[] str = line.split(" ");
                 if (line.charAt(0) == WRITE) {
                     collectData.addData(parseService.parseToData(line));
