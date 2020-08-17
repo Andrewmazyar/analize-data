@@ -18,37 +18,37 @@ public class OutputTest {
 
     @Test
     public void checkQuestionOk() {
-        Assert.assertTrue(outputService.checkQuestion("1.1.1", 1,1, 1));
+        Assert.assertTrue(outputService.isQuestion("1.1.1", 1,1, 1));
     }
 
     @Test
     public void checkQuestionOkForAll() {
-        Assert.assertTrue(outputService.checkQuestion("*", 1,2, 1));
+        Assert.assertTrue(outputService.isQuestion("*", 1,2, 1));
     }
 
     @Test
     public void checkQuestionFalse() {
-        Assert.assertFalse(outputService.checkQuestion("1.1.1", 1,2, 1));
+        Assert.assertFalse(outputService.isQuestion("1.1.1", 1,2, 1));
     }
 
     @Test
     public void checkServiceFalse() {
-        Assert.assertFalse(outputService.checkService("1.1", 1, 2));
+        Assert.assertFalse(outputService.isService("1.1", 1, 2));
     }
 
     @Test
     public void checkServiceOk() {
-        Assert.assertTrue(outputService.checkService("*", 1,2));
+        Assert.assertTrue(outputService.isService("*", 1,2));
     }
 
     @Test
     public void checkService_Ok() {
-        Assert.assertTrue(outputService.checkService("1.2", 1,2));
+        Assert.assertTrue(outputService.isService("1.2", 1,2));
     }
 
     @Test
     public void checkService_with_different_parametr_ok() {
-        Assert.assertTrue(outputService.checkService("1", 1,2));
+        Assert.assertTrue(outputService.isService("1", 1,2));
     }
 
     @Test

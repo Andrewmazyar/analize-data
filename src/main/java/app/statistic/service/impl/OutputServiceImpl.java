@@ -29,13 +29,13 @@ public class OutputServiceImpl implements OutputService {
             for (InputData data : collectData.getAll()) {
                 if (data.getDateTime().isAfter(dateList.get(0))
                         && data.getDateTime().isBefore(dateList.get(1))) {
-                    boolean first = checkService(str[1], data.getServiceId(),
+                    boolean service = isService(str[1], data.getServiceId(),
                             data.getVariationId());
-                    boolean second = checkQuestion(str[QUESTION],
+                    boolean question = isQuestion(str[QUESTION],
                             data.getQuestionTypeId(),
                             data.getCategoryId(),
                             data.getSubCategoryId());
-                    if (first && second) {
+                    if (service && question) {
                         result = result + data.getVariable();
                         amount++;
                     }
@@ -57,7 +57,7 @@ public class OutputServiceImpl implements OutputService {
         return dateList;
     }
 
-    public boolean checkService(String line, Integer id, Integer variation) {
+    public boolean isService(String line, Integer id, Integer variation) {
         if (line.equals("*")) {
             return true;
         }
@@ -73,7 +73,7 @@ public class OutputServiceImpl implements OutputService {
         return id.equals(checkId);
     }
 
-    public boolean checkQuestion(String line, Integer id, Integer category, Integer sub) {
+    public boolean isQuestion(String line, Integer id, Integer category, Integer sub) {
         if (line.equals("*")) {
             return true;
         }
